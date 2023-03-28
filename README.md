@@ -77,4 +77,12 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
   - npm install -D tailwindcss
   - npx tailwindcss init
   !! Follow tailwind instruction tailwind css react!!!
-3. 
+3. create pages and Routes
+  # to create pages and routes in React I use react Router
+  install react router, and react router DOM
+  - npm i react-router react-router-dom
+4. in SRC folder, I created pages folder
+  # Home.jsx
+5. import in App.js BrowserRouter from "react-router-dom", Routes, Route as well
+6. create pages: Home, SignIn, Profile .... etc.
+ 
