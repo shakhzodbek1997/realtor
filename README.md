@@ -95,4 +95,15 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 9. -useLocation to get path name on battons(home, offers, sign-in ...)
    - useNavigate give as to control opportunity inside thw website 
 
+10. Sign in / Sign Up, forget Password page
+11. Installed tailwind css forms 
+    # npm install -D @tailwindcss/forms
+    // tailwind.config.js
+    
+      plugins: [
+        require('@tailwindcss/forms'),
+        // ...
+      ],
+12. 
+
 
