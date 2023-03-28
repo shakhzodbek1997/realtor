@@ -85,4 +85,14 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
   # Home.jsx
 5. import in App.js BrowserRouter from "react-router-dom", Routes, Route as well
 6. create pages: Home, SignIn, Profile .... etc.
- 
+
+7. inside the SRC folder create component folder
+
+8. create Header Component (logo, HOME, Offers, Sign In/Profile buttons )
+  # this component should have all the pages at the top side
+  >> so that I will put this component otside the Routes!!!
+  -- so all the applications can see the header
+9. -useLocation to get path name on battons(home, offers, sign-in ...)
+   - useNavigate give as to control opportunity inside thw website 
+
+
