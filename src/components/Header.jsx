@@ -7,6 +7,8 @@ function Header() {
 
   function pathMatchRoute(route) {
     if (route === location.pathname) {
+      console.log("route>>: ", route);
+      console.log("Location path name: ", location.pathname)
       return true;
     }
   }
@@ -26,24 +28,24 @@ function Header() {
         <div>
           <ul className="flex space-x-10">
             <li
-              className={` py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent cursor-pointer ${
+              className={`py-3 text-sm font-semibold text-gray-400 border-b-[3px]  cursor-pointer ${
                 pathMatchRoute("/") && "text-black border-b-red-500"
-              } }`}
+              }`}
               onClick={() => navigate("/")}
             >
               Home
             </li>
             <li
-              className={` py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent cursor-pointer ${
+              className={`py-3 text-sm font-semibold text-gray-400 border-b-[3px]  cursor-pointer ${
                 pathMatchRoute("/offers") && "text-black border-b-red-500"
-              } }`}
+              }`}
               onClick={() => navigate("/offers")}
             >
               Offers
             </li>
             <li
-              className={`py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent cursor-pointer ${
-                pathMatchRoute("/sign-in") && "text-black border-b-red-500"
+              className={`py-3 text-sm font-semibold text-gray-400 border-b-[3px]  cursor-pointer ${
+                pathMatchRoute("/sign-in") && "text-black border-red-500"
               } `}
               onClick={() => navigate('/sign-in')}
             >
