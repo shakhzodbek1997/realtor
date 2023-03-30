@@ -7,8 +7,6 @@ function Header() {
 
   function pathMatchRoute(route) {
     if (route === location.pathname) {
-      console.log("route>>: ", route);
-      console.log("Location path name: ", location.pathname)
       return true;
     }
   }

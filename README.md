@@ -104,6 +104,24 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
         require('@tailwindcss/forms'),
         // ...
       ],
-12. 
+12. Install firebase and react-toastify and sign up the user
+  #https://firebase.google.com > go to console > Add project > choose name of th project (raltor) > 
+   > deisabled Google analytical and create project 
+   > click </> (web)
+   > add firbase to your web app
+     > write a Nick name to oyur project
+     > you may enable the Firebase hosting  but I used vercel
+     > register
+     > Fribase gives you SDK
+  # instal firebase to your project
+    - npm install firebase
+  # we need to create a file ( firebase.js) in our app coppy the given code on firebase
+    > const app = initializeApp(firebaseConfig); change this code like this >  initializeApp(firebaseConfig) 
+    >  import this file inside the firbase file:  import { getFirestore } from 'firebase/firestore';
+    >  and export it in this file: export const db = getFirestore();
+
+13. install toastefy to the project 
+  # npm install --save react-toastify
+
 
 
