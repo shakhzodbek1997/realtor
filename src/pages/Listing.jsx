@@ -7,12 +7,17 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { EffectFade, Autoplay, Navigation, Pagination } from "swiper";
 import "swiper/css/bundle";
 import {FaShare, FaMapMarkerAlt, FaBed, FaBath, FaParking, FaChair } from 'react-icons/fa';
+import {getAuth} from 'firebase/auth';
+import Contact from "../components/Contact";
 
 export default function Listing() {
+  const auth = getAuth();
   const params = useParams();
   const [listing, setListing] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [shareLinkCopied, setShareLinkCopied] = useState(false)
+  const [shareLinkCopied, setShareLinkCopied] = useState(false);
+  const [contactLandlord, setContactLandlord] = useState(false);
+
   SwiperCore.use([Autoplay, Navigation, Pagination]);
 
   useEffect(() => {
@@ -52,6 +57,7 @@ export default function Listing() {
           </SwiperSlide>
         ))}
       </Swiper>
+      
       <div 
         onClick={() => {
           navigator.clipboard.writeText(window.location.href)
@@ -69,8 +75,9 @@ export default function Listing() {
           Link Copied
         </p>
       }
+      
       <div className="m-4 flex flex-col md:flex-row max-w-6xl lg:mx-auto p-4 rounded-lg shadow-lg bg-white lg:space-x-5">
-        <div className="h-[300px] lg-[400px] w-full">
+        <div className="w-full">
           <p className="text-2xl font-bold mb-3 text-blue-900">
             {listing.name} - $ {listing.offer ? listing.discountedPrice
                 .toString()
@@ -101,7 +108,7 @@ export default function Listing() {
             <span className="font-semibold">Description - </span>
             {listing.description}
           </p>
-          <ul className="flex items-center space-x-5 sm:space-x-10 text-sm font-semibold">
+          <ul className="flex items-center space-x-5 sm:space-x-10 text-sm font-semibold mb-6">
             <li className="flex items-center whitespace-nowrap">
               <FaBed className="text-lg mr-1"/>
               {+listing.bedrooms > 1 ? `${listing.bedrooms} Beds` : "1 Bed" }
@@ -114,16 +121,27 @@ export default function Listing() {
               <FaParking className="text-lg mr-1"/>
               {listing.parking ? "Parking Spot" : "No Parking" }
             </li>
-            <li className="flex items-center whitespace-nowrap">
+            <li className="flex items-center whitespace-nowrap"> 
               <FaChair className="text-lg mr-1"/>
               {listing.furnished ? "Furnished" : "Not Furnished" }
             </li>
           </ul>
-        </div>
-        
-        
-        <div className="bg-blue-300 h-[300px] lg-[400px] w-full z-10 overflow-x-hidden">
 
+          {listing.userRef !== auth.currentUser?.uid && !contactLandlord && (
+            <div className="mt-6">
+              <button
+                onClick={() => setContactLandlord(true)}
+                className="px-7 py-2 bg-blue-600 text-white font-medium rounded text-sm uppercase shadow-md hover:bg-blue-700 hover:shadov-lg focus:bg-blue-700 focus:shadow-lg w-full text-center transition duration-150 ease-in-out "
+              >
+                Contact Landlord
+              </button>
+            </div>
+          )}
+          {contactLandlord && (
+            <Contact userRef={listing.userRef} listing={listing} />  
+          )}
+        </div>
+        <div className="bg-blue-300 h-[300px] lg-[400px] w-full z-10 overflow-x-hidden">
         </div>
       </div>
     </main>
